@@ -7,7 +7,7 @@ using FluentNHibernate.Mapping;
 
 namespace CentralApplication.Mappers
 {
-    class DocumentMapper: ClassMap<Entities.Document>
+    public class DocumentMapper: ClassMap<Entities.Document>
     {
         public DocumentMapper()
         {
