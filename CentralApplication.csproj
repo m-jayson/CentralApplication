@@ -108,8 +108,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ChildFormHelper.cs" />
+    <Compile Include="Classes\HelperUtils.cs" />
     <Compile Include="Classes\SessionFactory.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Document.cs" />
     <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
@@ -129,6 +130,18 @@
     <Compile Include="Forms\frmRegistration_AE.Designer.cs">
       <DependentUpon>frmRegistration_AE.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmRelease.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRelease.Designer.cs">
+      <DependentUpon>frmRelease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRelease_AE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRelease_AE.Designer.cs">
+      <DependentUpon>frmRelease_AE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\mdiMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +156,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRegistration.resx">
       <DependentUpon>frmRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRegistration_AE.resx">
+      <DependentUpon>frmRegistration_AE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRelease.resx">
+      <DependentUpon>frmRelease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRelease_AE.resx">
+      <DependentUpon>frmRelease_AE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\mdiMain.resx">
       <DependentUpon>mdiMain.cs</DependentUpon>

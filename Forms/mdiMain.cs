@@ -16,11 +16,19 @@ namespace CentralApplication
 {
     public partial class mdiMain : Form
     {
-        ArrayList childWindows = new ArrayList();
 
         public mdiMain()
         {
             InitializeComponent();
+        }
+
+        public ToolStrip toolStripControl()
+        {
+            return this.toolStrip;
+        }
+        public MenuStrip menuStripControl()
+        {
+            return this.menuStrip;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,7 +39,17 @@ namespace CentralApplication
 
         private void registrationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChildFormHelper.loadChild(new frmRegistration(), this);
+            HelperUtils.loadChild(new frmRegistration(),isDelete: false);
+        }
+
+        private void releaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelperUtils.loadChild(new frmRelease(), isDelete: false);
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            HelperUtils.loadModalAE();
         }
     }
 }

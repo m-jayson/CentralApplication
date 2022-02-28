@@ -11,20 +11,19 @@ using System.Windows.Forms;
 
 namespace CentralApplication.Forms
 {
-    public partial class frmRegistration_AE : Form
+    public partial class frmRelease_AE : Form
     {
         long id;
         User user;
 
-        public frmRegistration_AE(User user,long id)
+        public frmRelease_AE(User user, long id)
         {
             InitializeComponent();
 
             this.id = id;
             this.user = user;
         }
-
-        private void frmRegistration_AE_Load(object sender, EventArgs e)
+        private void frmRelease_AE_Load(object sender, EventArgs e)
         {
 
         }

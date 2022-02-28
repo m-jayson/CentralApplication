@@ -1,4 +1,5 @@
-﻿using CentralApplication.Forms;
+﻿using CentralApplication.Classes;
+using CentralApplication.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,9 @@ namespace CentralApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mdiMain());
+           
+            var helper = HelperUtils.Instance();
+            Application.Run(helper.ParentForm);
         }
     }
 }

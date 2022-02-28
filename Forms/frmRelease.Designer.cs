@@ -1,7 +1,7 @@
 ﻿
 namespace CentralApplication.Forms
 {
-    partial class frmRegistration_AE
+    partial class frmRelease
     {
         /// <summary>
         /// Required designer variable.
@@ -31,14 +31,15 @@ namespace CentralApplication.Forms
         {
             this.SuspendLayout();
             // 
-            // frmRegistration_AE
+            // frmRelease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "frmRegistration_AE";
-            this.Text = "frmRegistration_AE";
-            this.Load += new System.EventHandler(this.frmRegistration_AE_Load);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "frmRelease";
+            this.Tag = "Release";
+            this.Text = "frmRelease";
             this.ResumeLayout(false);
 
         }
