@@ -33,13 +33,15 @@ namespace CentralApplication.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             using (var _session = SessionFactory.OpenSession)
             {
                 var userResult = _session.Query<User>()
                    .Where(user => user.UserCredential.Username == txtUsername.Text)
                    .SingleOrDefault();
 
-                if(userResult == null)
+                Cursor.Current = Cursors.Default;
+                if (userResult == null)
                 {
                     MessageBox.Show("User not found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

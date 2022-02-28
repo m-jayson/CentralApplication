@@ -8,7 +8,7 @@ using FluentNHibernate.Mapping;
 
 namespace CentralApplication.Mappers
 {
-    public class UserRoleMapper: ClassMap<Entities.UserRole>
+    public class UserRoleMapper: ClassMap<UserRole>
     {
         public UserRoleMapper()
         {
