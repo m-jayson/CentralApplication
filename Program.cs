@@ -21,7 +21,7 @@ namespace CentralApplication
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            /*using (var _session = SessionFactory.OpenSession)
+            using (var _session = SessionFactory.OpenSession)
             {
                 using(var _transaction = _session.BeginTransaction())
                 {
@@ -49,7 +49,7 @@ namespace CentralApplication
                     _session.Save (user);
                     _transaction.Commit();
                 }
-            }*/
+            }
 
             var helper = MdiHelper.Instance();
             Application.Run(helper.ParentForm);
