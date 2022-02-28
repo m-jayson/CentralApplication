@@ -77,15 +77,6 @@ namespace CentralApplication.Classes
             }
         }
 
-        private void showNotification(string text,string title)
-        {
-            var notifyIcon = parentForm.notifyIconControl();
-            notifyIcon.Visible = true;
-            notifyIcon.BalloonTipText = text;
-            notifyIcon.BalloonTipTitle = title;
-            notifyIcon.Icon = SystemIcons.Information;
-            notifyIcon.ShowBalloonTip(1000);
-        }
 
         private void toolbarButtons(bool isAdd = false,bool isEdit = false, bool isDelete = false, bool isRefresh = false)
         {
@@ -184,7 +175,6 @@ namespace CentralApplication.Classes
             }
         }
 
-
         public static void refreshChildRecord()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -194,6 +184,16 @@ namespace CentralApplication.Classes
 
             MethodInfo methodInfo = childFormType.GetMethod("loadData");
             methodInfo.Invoke(childForm, null);
+        }
+
+        public static void showNotification(string text, string title)
+        {
+            var notifyIcon = instance.parentForm.notifyIconControl();
+            notifyIcon.Visible = true;
+            notifyIcon.BalloonTipText = text;
+            notifyIcon.BalloonTipTitle = title;
+            notifyIcon.Icon = SystemIcons.Information;
+            notifyIcon.ShowBalloonTip(1000);
         }
     }
 }

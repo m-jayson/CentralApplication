@@ -25,6 +25,7 @@ namespace CentralApplication
             {
                 using(var _transaction = _session.BeginTransaction())
                 {
+
                     var user = new User();
                     var cred = new UserCredential();
 
@@ -32,6 +33,12 @@ namespace CentralApplication
                     cred.Password = "pass";
 
 
+                    var userRole = new UserRole();
+                    userRole.ModuleType = ModuleType.Registration;
+                    userRole.AccessType = AccessType.CAN_ADD;
+
+                    cred.UserRole = new List<UserRole>();
+                    cred.UserRole.Add(userRole);
 
                     user.Firstname = "Jayson";
                     user.Lastname = "Gonzaga";
@@ -39,7 +46,7 @@ namespace CentralApplication
 
                     user.UserCredential = cred;
 
-                    _session.Save(user);
+                    _session.Save (user);
                     _transaction.Commit();
                 }
             }

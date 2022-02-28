@@ -49,9 +49,11 @@ namespace CentralApplication.Forms
                     if(userResult.UserCredential.Password != txtPassword.Text)
                     {
                         MessageBox.Show("Invalid Password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
                 }
 
+                MdiHelper.showNotification($"Welcome {userResult.Firstname} {userResult.Lastname}", "Login Successfull");
                 this.Close();
             }
         }

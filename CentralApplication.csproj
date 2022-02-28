@@ -133,7 +133,6 @@
   <ItemGroup>
     <Compile Include="Classes\MdiHelper.cs" />
     <Compile Include="Classes\SessionFactory.cs" />
-    <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entities\UserCredential.cs" />
     <Compile Include="Entities\User.cs" />
@@ -193,6 +192,7 @@
       <DependentUpon>mdiMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Mappers\UserCredentialMapper.cs" />
+    <Compile Include="Mappers\UserRoleMapper.cs" />
     <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

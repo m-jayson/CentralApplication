@@ -15,6 +15,8 @@ namespace CentralApplication.Mappers
             Map(x => x.Username).Not.Nullable();
             Map(x => x.Password).Not.Nullable();
 
+            HasMany(x => x.UserRole).Not.KeyNullable().Cascade.All();
+
             Table("user_credential");
         }
     }
