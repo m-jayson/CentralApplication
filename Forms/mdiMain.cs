@@ -22,6 +22,10 @@ namespace CentralApplication
             InitializeComponent();
         }
 
+        public NotifyIcon notifyIconControl()
+        {
+            return this.notifyIcon;
+        }
         public ToolStrip toolStripControl()
         {
             return this.toolStrip;
@@ -79,14 +83,16 @@ namespace CentralApplication
 
         private void tsExit_Click(object sender, EventArgs e)
         {
-            string message = "This will exit the system.\n\nDo you want to proceed?";
-            string title = "Exit Application";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+            var message = "This will exit the system.\n\nDo you want to proceed?";
+            var title = "Exit Application";
+            var buttons = MessageBoxButtons.YesNo;
+
+            var result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
                Application.Exit();
             }
+
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -122,6 +128,11 @@ namespace CentralApplication
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripButton4_Click(sender, e);
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

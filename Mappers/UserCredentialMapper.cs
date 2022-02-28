@@ -7,14 +7,15 @@ using FluentNHibernate.Mapping;
 
 namespace CentralApplication.Mappers
 {
-    public class DocumentMapper: ClassMap<Entities.Document>
+    public class UserCredentialMapper: ClassMap<Entities.UserCredential>
     {
-        public DocumentMapper()
+        public UserCredentialMapper()
         {
             Id(x => x.Id);
-            Map(x => x.Name).Not.Nullable();
+            Map(x => x.Username).Not.Nullable();
+            Map(x => x.Password).Not.Nullable();
 
-            Table("document");
+            Table("user_credential");
         }
     }
 }

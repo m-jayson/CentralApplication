@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CentralApplication.Classes;
+using CentralApplication.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +33,27 @@ namespace CentralApplication.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            this.Close();
+            using (var _session = SessionFactory.OpenSession)
+            {
+                var userResult = _session.Query<User>()
+                   .Where(user => user.UserCredential.Username == txtUsername.Text)
+                   .SingleOrDefault();
+
+                if(userResult == null)
+                {
+                    MessageBox.Show("User not found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    if(userResult.UserCredential.Password != txtPassword.Text)
+                    {
+                        MessageBox.Show("Invalid Password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+
+                this.Close();
+            }
         }
     }
 }

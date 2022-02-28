@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -76,6 +77,16 @@ namespace CentralApplication.Classes
             }
         }
 
+        private void showNotification(string text,string title)
+        {
+            var notifyIcon = parentForm.notifyIconControl();
+            notifyIcon.Visible = true;
+            notifyIcon.BalloonTipText = text;
+            notifyIcon.BalloonTipTitle = title;
+            notifyIcon.Icon = SystemIcons.Information;
+            notifyIcon.ShowBalloonTip(1000);
+        }
+
         private void toolbarButtons(bool isAdd = false,bool isEdit = false, bool isDelete = false, bool isRefresh = false)
         {
             mdiMain main = parentForm;
@@ -122,7 +133,7 @@ namespace CentralApplication.Classes
 
         public static void loadModalAE(long id = -1)
         {
-            var currentUser = new User() { Id = 1, Name = "Jayson" };
+            var currentUser = new User() { Id = 1, Firstname = "Jayson" };
 
             var assembly = Assembly.GetExecutingAssembly();
             var tag = instance.activeChild.Tag.ToString();

@@ -1,5 +1,7 @@
 ﻿using CentralApplication.Classes;
+using CentralApplication.Entities;
 using CentralApplication.Forms;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,30 @@ namespace CentralApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           
+
+            using (var _session = SessionFactory.OpenSession)
+            {
+                using(var _transaction = _session.BeginTransaction())
+                {
+                    var user = new User();
+                    var cred = new UserCredential();
+
+                    cred.Username = "admin";
+                    cred.Password = "pass";
+
+
+
+                    user.Firstname = "Jayson";
+                    user.Lastname = "Gonzaga";
+                    user.Middlename = "Vargas";
+
+                    user.UserCredential = cred;
+
+                    _session.Save(user);
+                    _transaction.Commit();
+                }
+            }
+
             var helper = MdiHelper.Instance();
             Application.Run(helper.ParentForm);
         }

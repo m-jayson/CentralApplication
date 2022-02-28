@@ -8,6 +8,8 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Automapping;
 using NHibernate.Cfg;
+using NHibernate.Dialect;
+using NHibernate.Tool.hbm2ddl;
 
 namespace CentralApplication.Classes
 {
@@ -39,11 +41,12 @@ namespace CentralApplication.Classes
             try
             {
                 var connectionString = System.Configuration.ConfigurationManager.AppSettings["connection_string"];
-                return Fluently.Configure()
-                    .Database(MySQLConfiguration.Standard.ConnectionString(connectionString))
+                var configuration = Fluently.Configure()
+                    .Database(PostgreSQLConfiguration.Standard.ConnectionString(connectionString).Dialect<PostgreSQL83Dialect>().ShowSql())
                     .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Program>())
-                    .ExposeConfiguration(BuildSchema)
-                    .BuildSessionFactory();
+                    .ExposeConfiguration(BuildSchema);
+
+                return configuration.BuildSessionFactory();
             }
             catch (Exception e)
             {
@@ -60,7 +63,8 @@ namespace CentralApplication.Classes
 
         private static void BuildSchema(Configuration config)
         {
-
+            //for testing purposes
+            new SchemaUpdate(config).Execute(false,true);
         }
     }
 }
