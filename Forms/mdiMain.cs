@@ -51,5 +51,20 @@ namespace CentralApplication
         {
             HelperUtils.loadModalAE();
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            HelperUtils.loadModalAE(1);
+        }
+
+        private void approvalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelperUtils.loadChild(new frmApproval(), isAdd: false,isEdit:false,isDelete:false);
+        }
+
+        private void transmittalShippingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelperUtils.loadChild(new frmTransmittal(), isDelete: false);
+        }
     }
 }

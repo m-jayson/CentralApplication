@@ -112,6 +112,12 @@
     <Compile Include="Classes\SessionFactory.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Document.cs" />
+    <Compile Include="Forms\frmApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmApproval.Designer.cs">
+      <DependentUpon>frmApproval.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,18 @@
     <Compile Include="Forms\frmRelease_AE.Designer.cs">
       <DependentUpon>frmRelease_AE.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmTransmittal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTransmittal.Designer.cs">
+      <DependentUpon>frmTransmittal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTransmittal_AE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTransmittal_AE.Designer.cs">
+      <DependentUpon>frmTransmittal_AE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\mdiMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +169,9 @@
     <Compile Include="Mappers\DocumentMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmApproval.resx">
+      <DependentUpon>frmApproval.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +186,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRelease_AE.resx">
       <DependentUpon>frmRelease_AE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTransmittal.resx">
+      <DependentUpon>frmTransmittal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTransmittal_AE.resx">
+      <DependentUpon>frmTransmittal_AE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\mdiMain.resx">
       <DependentUpon>mdiMain.cs</DependentUpon>

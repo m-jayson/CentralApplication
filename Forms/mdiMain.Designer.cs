@@ -36,6 +36,8 @@ namespace CentralApplication
             this.documentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.releaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.approvalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transmittalShippingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsExit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -78,26 +80,48 @@ namespace CentralApplication
             // 
             this.documentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registrationToolStripMenuItem,
-            this.releaseToolStripMenuItem});
+            this.releaseToolStripMenuItem,
+            this.approvalToolStripMenuItem,
+            this.transmittalShippingToolStripMenuItem});
             this.documentToolStripMenuItem.Name = "documentToolStripMenuItem";
-            this.documentToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.documentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.documentToolStripMenuItem.Text = "&Document";
             // 
             // registrationToolStripMenuItem
             // 
             this.registrationToolStripMenuItem.Name = "registrationToolStripMenuItem";
-            this.registrationToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.registrationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.registrationToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.registrationToolStripMenuItem.Tag = "Registration";
-            this.registrationToolStripMenuItem.Text = "Registration";
+            this.registrationToolStripMenuItem.Text = "&Registration";
             this.registrationToolStripMenuItem.Click += new System.EventHandler(this.registrationToolStripMenuItem_Click);
             // 
             // releaseToolStripMenuItem
             // 
             this.releaseToolStripMenuItem.Name = "releaseToolStripMenuItem";
-            this.releaseToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.releaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.releaseToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.releaseToolStripMenuItem.Tag = "Release";
-            this.releaseToolStripMenuItem.Text = "Release";
+            this.releaseToolStripMenuItem.Text = "R&elease";
             this.releaseToolStripMenuItem.Click += new System.EventHandler(this.releaseToolStripMenuItem_Click);
+            // 
+            // approvalToolStripMenuItem
+            // 
+            this.approvalToolStripMenuItem.Name = "approvalToolStripMenuItem";
+            this.approvalToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.approvalToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.approvalToolStripMenuItem.Tag = "Approval";
+            this.approvalToolStripMenuItem.Text = "&Approval";
+            this.approvalToolStripMenuItem.Click += new System.EventHandler(this.approvalToolStripMenuItem_Click);
+            // 
+            // transmittalShippingToolStripMenuItem
+            // 
+            this.transmittalShippingToolStripMenuItem.Name = "transmittalShippingToolStripMenuItem";
+            this.transmittalShippingToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.transmittalShippingToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.transmittalShippingToolStripMenuItem.Tag = "Transmittal";
+            this.transmittalShippingToolStripMenuItem.Text = "&Transmittal/Shipping";
+            this.transmittalShippingToolStripMenuItem.Click += new System.EventHandler(this.transmittalShippingToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -123,7 +147,7 @@ namespace CentralApplication
             this.tsExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsExit.Name = "tsExit";
             this.tsExit.Size = new System.Drawing.Size(23, 22);
-            this.tsExit.Text = "toolStripButton1";
+            this.tsExit.Text = "Exit System";
             // 
             // toolStripSeparator1
             // 
@@ -137,7 +161,7 @@ namespace CentralApplication
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Text = "New Entry";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
@@ -147,7 +171,8 @@ namespace CentralApplication
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Text = "Update Existing Record";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripButton3
             // 
@@ -156,7 +181,7 @@ namespace CentralApplication
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Text = "Delete";
             // 
             // toolStripSeparator2
             // 
@@ -170,7 +195,7 @@ namespace CentralApplication
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.Text = "Refresh";
             // 
             // statusStrip1
             // 
@@ -222,6 +247,8 @@ namespace CentralApplication
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripMenuItem approvalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transmittalShippingToolStripMenuItem;
     }
 }
 
