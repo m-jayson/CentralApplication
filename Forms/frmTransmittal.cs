@@ -16,5 +16,15 @@ namespace CentralApplication.Forms
         {
             InitializeComponent();
         }
+
+        private void frmTransmittal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void loadData()
+        {
+            MessageBox.Show("Refreshing Data from transmittal");
+        }
     }
 }

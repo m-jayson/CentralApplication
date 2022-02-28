@@ -19,7 +19,7 @@ namespace CentralApplication
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
            
-            var helper = HelperUtils.Instance();
+            var helper = MdiHelper.Instance();
             Application.Run(helper.ParentForm);
         }
     }

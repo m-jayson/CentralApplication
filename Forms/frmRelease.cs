@@ -16,5 +16,15 @@ namespace CentralApplication.Forms
         {
             InitializeComponent();
         }
+
+        private void frmRelease_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void loadData()
+        {
+            MessageBox.Show("Refreshing Data from release");
+        }
     }
 }

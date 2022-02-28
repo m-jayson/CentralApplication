@@ -39,6 +39,7 @@ namespace CentralApplication.Forms
             this.Name = "frmApproval";
             this.Tag = "Approval";
             this.Text = "Approval";
+            this.Load += new System.EventHandler(this.frmApproval_Load);
             this.ResumeLayout(false);
 
         }

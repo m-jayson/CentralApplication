@@ -39,6 +39,7 @@ namespace CentralApplication.Forms
             this.Name = "frmTransmittal";
             this.Tag = "Transmittal";
             this.Text = "Transmittal";
+            this.Load += new System.EventHandler(this.frmTransmittal_Load);
             this.ResumeLayout(false);
 
         }

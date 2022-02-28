@@ -9,53 +9,67 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace CentralApplication.Classes
 {
-    public sealed class HelperUtils
+    public sealed class MdiHelper
     {
 
-        private static HelperUtils instance = null;
+        private static MdiHelper instance = null;
         private static readonly object xLock = new object ();
 
         private mdiMain parentForm;
         private Form activeChild;
-        private List<ToolStripMenuItem> allItems = new List<ToolStripMenuItem>();
+        private List<ToolStripItem> allItems = new List<ToolStripItem>();
 
         public mdiMain ParentForm { get => parentForm; set => parentForm = value; }
         public Form ActiveChild { get => activeChild; set => activeChild = value; }
 
-        private HelperUtils() 
+        private MdiHelper() 
         {
             parentForm = new mdiMain();
             toolbarButtons();
 
             var menuStrip = parentForm.menuStripControl();
-            foreach (ToolStripMenuItem toolItem in menuStrip.Items)
+            foreach (ToolStripItem toolItem in menuStrip.Items)
             {
                 allItems.Add(toolItem);
                 //add sub items
                 allItems.AddRange(GetItems(toolItem));
             }
 
-            IEnumerable<ToolStripMenuItem> GetItems(ToolStripMenuItem item)
+            IEnumerable<ToolStripItem> GetItems(ToolStripItem item)
             {
-                foreach (ToolStripMenuItem dropDownItem in item.DropDownItems)
+                if (item is ToolStripMenuItem)
                 {
-                    if (dropDownItem.HasDropDownItems)
+                    foreach (ToolStripItem tsi in (item as ToolStripMenuItem).DropDownItems)
                     {
-                        foreach (ToolStripMenuItem subItem in GetItems(dropDownItem))
-                            yield return subItem;
+                        if (tsi is ToolStripMenuItem)
+                        {
+                            if ((tsi as ToolStripMenuItem).HasDropDownItems)
+                            {
+                                foreach (ToolStripItem subItem in GetItems((tsi as ToolStripMenuItem)))
+                                    yield return subItem;
+                            }
+                            yield return (tsi as ToolStripMenuItem);
+                        }
+                        else if (tsi is ToolStripSeparator)
+                        {
+                            yield return (tsi as ToolStripSeparator);
+                        }
                     }
-                    yield return dropDownItem;
+                }
+                else if (item is ToolStripSeparator)
+                {
+                    yield return (item as ToolStripSeparator);
                 }
             }
         }
 
-        public static HelperUtils Instance()
+        public static MdiHelper Instance()
         {
             lock (xLock)
             {
                 if (instance == null)
                 {
-                    instance = new HelperUtils();
+                    instance = new MdiHelper();
                 }
 
                 return instance;
@@ -65,13 +79,24 @@ namespace CentralApplication.Classes
         private void toolbarButtons(bool isAdd = false,bool isEdit = false, bool isDelete = false, bool isRefresh = false)
         {
             mdiMain main = parentForm;
+            var toolStrip = main.toolStripControl();
+            var actionToolStrip = main.actionStripControl();
 
-            main.toolStripControl().Items[1].Visible = true; //start separator
-            main.toolStripControl().Items[2].Visible = isAdd; //add
-            main.toolStripControl().Items[3].Visible = isEdit; //edit
-            main.toolStripControl().Items[4].Visible = isDelete; //delete
-            main.toolStripControl().Items[5].Visible = isDelete  || isRefresh; //end separator
-            main.toolStripControl().Items[6].Visible = isRefresh;
+            toolStrip.Items[1].Visible = true; //start separator
+            toolStrip.Items[2].Visible = isAdd; //add
+            toolStrip.Items[3].Visible = isEdit; //edit
+            toolStrip.Items[4].Visible = isDelete; //delete
+            toolStrip.Items[5].Visible = isDelete  || isRefresh; //end separator
+            toolStrip.Items[6].Visible = isRefresh;
+
+            actionToolStrip.Visible = isAdd || isEdit || isDelete || isRefresh;
+
+            actionToolStrip.DropDownItems[0].Visible = isAdd;
+            actionToolStrip.DropDownItems[1].Visible = isEdit;
+            actionToolStrip.DropDownItems[2].Visible = isDelete;
+            actionToolStrip.DropDownItems[3].Visible = isDelete;
+            actionToolStrip.DropDownItems[4].Visible = isRefresh;
+            actionToolStrip.DropDownItems[5].Visible = isRefresh;
         }
         private void menuStrip(Form activeFormChild,bool isEnable = false)
         {
@@ -148,5 +173,16 @@ namespace CentralApplication.Classes
             }
         }
 
+
+        public static void refreshChildRecord()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var childForm = instance.activeChild;
+            var childFormName = "CentralApplication.Forms." + childForm.Name;
+            var childFormType = assembly.GetType(childFormName);
+
+            MethodInfo methodInfo = childFormType.GetMethod("loadData");
+            methodInfo.Invoke(childForm, null);
+        }
     }
 }

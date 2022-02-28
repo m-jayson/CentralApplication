@@ -21,5 +21,10 @@ namespace CentralApplication.Forms
         {
 
         }
+
+        public void loadData()
+        {
+            MessageBox.Show("Refreshing Data from registration");
+        }
     }
 }

@@ -108,7 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\HelperUtils.cs" />
+    <Compile Include="Classes\MdiHelper.cs" />
     <Compile Include="Classes\SessionFactory.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Document.cs" />

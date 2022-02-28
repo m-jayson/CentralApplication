@@ -40,6 +40,7 @@ namespace CentralApplication.Forms
             this.Name = "frmRelease";
             this.Tag = "Release";
             this.Text = "frmRelease";
+            this.Load += new System.EventHandler(this.frmRelease_Load);
             this.ResumeLayout(false);
 
         }

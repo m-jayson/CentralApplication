@@ -19,7 +19,14 @@ namespace CentralApplication.Forms
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            string message = "This will exit the system.\n\nDo you want to proceed?";
+            string title = "Exit Application";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
