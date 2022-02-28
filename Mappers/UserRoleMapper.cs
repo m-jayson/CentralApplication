@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CentralApplication.Entities;
+using CentralApplication.Entities.Enumerations;
 using FluentNHibernate.Mapping;
 
 namespace CentralApplication.Mappers

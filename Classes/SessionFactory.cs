@@ -64,7 +64,7 @@ namespace CentralApplication.Classes
         private static void BuildSchema(Configuration config)
         {
             //for testing purposes
-            //new SchemaUpdate(config).Execute(false,true);
+            new SchemaUpdate(config).Execute(false,true);
         }
     }
 }

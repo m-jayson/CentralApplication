@@ -133,6 +133,11 @@
   <ItemGroup>
     <Compile Include="Classes\MdiHelper.cs" />
     <Compile Include="Classes\SessionFactory.cs" />
+    <Compile Include="Entities\Enumerations\AccessType.cs" />
+    <Compile Include="Entities\Enumerations\CompanyType.cs" />
+    <Compile Include="Entities\Enumerations\DocumentType.cs" />
+    <Compile Include="Entities\Enumerations\ModuleType.cs" />
+    <Compile Include="Entities\Registration.cs" />
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entities\UserCredential.cs" />
     <Compile Include="Entities\User.cs" />
@@ -191,6 +196,8 @@
     <Compile Include="Forms\mdiMain.Designer.cs">
       <DependentUpon>mdiMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\DocumentMaper.cs" />
+    <Compile Include="Mappers\RegistrationMapper.cs" />
     <Compile Include="Mappers\UserCredentialMapper.cs" />
     <Compile Include="Mappers\UserRoleMapper.cs" />
     <Compile Include="Mappers\UserMapper.cs" />

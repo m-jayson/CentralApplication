@@ -11,5 +11,4 @@ namespace CentralApplication.Entities.Enumerations
         Registration = 1,
         Releasing = 2
     }
-
 }

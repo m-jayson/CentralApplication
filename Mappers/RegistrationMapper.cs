@@ -8,7 +8,7 @@ using FluentNHibernate.Mapping;
 
 namespace CentralApplication.Mappers
 {
-    public class RegistrationMapper: ClassMap<Entities.Registration>
+    public class RegistrationMapper : ClassMap<Entities.Registration>
     {
         public RegistrationMapper()
         {

@@ -12,7 +12,7 @@ namespace CentralApplication.Mappers
         public UserCredentialMapper()
         {
             Id(x => x.Id);
-            Map(x => x.Username).Not.Nullable();
+            Map(x => x.Username).Not.Nullable().Unique();
             Map(x => x.Password).Not.Nullable();
 
             HasMany(x => x.UserRole).Not.KeyNullable().Cascade.All();

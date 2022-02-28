@@ -1,5 +1,6 @@
 ﻿using CentralApplication.Classes;
 using CentralApplication.Entities;
+using CentralApplication.Entities.Enumerations;
 using CentralApplication.Forms;
 using NHibernate;
 using System;
