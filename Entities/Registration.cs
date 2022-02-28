@@ -17,5 +17,7 @@ namespace CentralApplication.Entities
         public virtual CompanyType CompanyType { get; set; }
 
         public virtual DocumentType DocumentType { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

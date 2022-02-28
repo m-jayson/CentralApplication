@@ -136,6 +136,7 @@
     <Compile Include="Entities\Enumerations\AccessType.cs" />
     <Compile Include="Entities\Enumerations\CompanyType.cs" />
     <Compile Include="Entities\Enumerations\DocumentType.cs" />
+    <Compile Include="Entities\Enumerations\FormStatus.cs" />
     <Compile Include="Entities\Enumerations\ModuleType.cs" />
     <Compile Include="Entities\Registration.cs" />
     <Compile Include="Entities\UserRole.cs" />

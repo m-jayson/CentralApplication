@@ -21,6 +21,8 @@ namespace CentralApplication.Mappers
                 .Inverse()
                 .Cascade.All();
 
+            HasOne(s => s.User).Constrained();
+
             Table("document_registration");
         }
     }

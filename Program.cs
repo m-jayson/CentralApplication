@@ -24,7 +24,7 @@ namespace CentralApplication
 
             using (var _session = SessionFactory.OpenSession)
             {
-                using(var _transaction = _session.BeginTransaction())
+                using (var _transaction = _session.BeginTransaction())
                 {
 
                     var user = new User();
@@ -47,7 +47,7 @@ namespace CentralApplication
 
                     user.UserCredential = cred;
 
-                    _session.Save (user);
+                    _session.Save(user);
                     _transaction.Commit();
                 }
             }

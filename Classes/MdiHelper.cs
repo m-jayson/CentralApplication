@@ -1,4 +1,5 @@
 ﻿using CentralApplication.Entities;
+using CentralApplication.Entities.Enumerations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -131,8 +132,8 @@ namespace CentralApplication.Classes
             var formName = "CentralApplication.Forms.frm" + tag + "_AE";
 
             var type = assembly.GetType(formName);
-            var ci = type.GetConstructor(new Type[2] { typeof(User),typeof(long) });
-            var argVals = new object[] { currentUser,id }; 
+            var ci = type.GetConstructor(new Type[3] { typeof(User),typeof(FormStatus),typeof(long) });
+            var argVals = new object[] { currentUser,id <=0 ? FormStatus.FORM_ADD : FormStatus.FORM_EDIT,id }; 
 
             var frm = (Form) ci.Invoke(argVals);
 
@@ -186,13 +187,13 @@ namespace CentralApplication.Classes
             methodInfo.Invoke(childForm, null);
         }
 
-        public static void showNotification(string text, string title)
+        public static void showNotification(string text, string title,Icon systemIcons)
         {
             var notifyIcon = instance.parentForm.notifyIconControl();
             notifyIcon.Visible = true;
             notifyIcon.BalloonTipText = text;
             notifyIcon.BalloonTipTitle = title;
-            notifyIcon.Icon = SystemIcons.Information;
+            notifyIcon.Icon = systemIcons;
             notifyIcon.ShowBalloonTip(1000);
         }
     }
