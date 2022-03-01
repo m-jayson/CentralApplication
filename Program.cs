@@ -21,8 +21,10 @@ namespace CentralApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(MdiHelper.Instance().ParentForm);
-            /* using (var _session = SessionFactory.OpenSession)
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
+            //Application.Run(MdiHelper.Instance().ParentForm);
+            using (var _session = SessionFactory.OpenSession)
              {
                  using (var _transaction = _session.BeginTransaction())
                  {
@@ -45,7 +47,7 @@ namespace CentralApplication
              }
 
              var helper = MdiHelper.Instance();
-             Application.Run(helper.ParentForm);*/
+             Application.Run(helper.ParentForm);
         }
     }
 }

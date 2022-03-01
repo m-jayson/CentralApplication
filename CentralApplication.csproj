@@ -134,9 +134,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\EventListener\AuditEventListener.cs" />
+    <Compile Include="Classes\EventListener\IHaveAuditInformation.cs" />
     <Compile Include="Classes\FormHelper.cs" />
     <Compile Include="Classes\MdiHelper.cs" />
     <Compile Include="Classes\SessionFactory.cs" />
+    <Compile Include="Classes\UserStateHolder.cs" />
     <Compile Include="Entities\Enumerations\AccessType.cs" />
     <Compile Include="Entities\Enumerations\CompanyType.cs" />
     <Compile Include="Entities\Enumerations\DocumentType.cs" />

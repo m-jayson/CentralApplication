@@ -17,15 +17,13 @@ namespace CentralApplication.Forms
     public partial class frmRegistration_AE : Form
     {
         long id;
-        User user;
         FormStatus formStatus;
 
-        public frmRegistration_AE(User user,FormStatus formStatus,long id)
+        public frmRegistration_AE(FormStatus formStatus,long id)
         {
             InitializeComponent();
 
             this.id = id;
-            this.user = user;
             this.formStatus = formStatus;
         }
 
@@ -51,8 +49,7 @@ namespace CentralApplication.Forms
             {
                 BookletCount = bookletCount,
                 CompanyType = CompanyType.COSMOS,
-                DocumentType = this.rbLPA.Checked ? DocumentType.LPA : DocumentType.PR,
-                User = this.user
+                DocumentType = this.rbLPA.Checked ? DocumentType.LPA : DocumentType.PR
             };
 
 

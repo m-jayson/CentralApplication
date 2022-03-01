@@ -55,6 +55,7 @@ namespace CentralApplication.Forms
                     }
                 }
 
+                UserStateHolder.loginUser(userResult);
                 MdiHelper.showNotification($"Welcome {userResult.Firstname} {userResult.Lastname}", "Login Successfull",SystemIcons.Information );
                 this.Close();
             }

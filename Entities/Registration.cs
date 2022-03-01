@@ -1,4 +1,5 @@
 ﻿using CentralApplication.Classes;
+using CentralApplication.Classes.EventListener;
 using CentralApplication.Entities.Enumerations;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace CentralApplication.Entities
 {
-    public class Registration
+    public class Registration : IHaveAuditInformation
     {
-        public virtual int Id { get; set; }
         public virtual int BookletCount { get; set; }
 
         public virtual IList<Document> Documents { get; set; }
@@ -18,8 +18,6 @@ namespace CentralApplication.Entities
         public virtual CompanyType CompanyType { get; set; }
 
         public virtual DocumentType DocumentType { get; set; }
-
-        public virtual User User { get; set; }
 
         /**
          * Method to find the latest seqence encoded

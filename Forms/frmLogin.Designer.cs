@@ -35,11 +35,12 @@ namespace CentralApplication.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(183, 105);
+            this.btnLogin.Location = new System.Drawing.Point(183, 93);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 0;
@@ -49,7 +50,7 @@ namespace CentralApplication.Forms
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(264, 105);
+            this.btnClose.Location = new System.Drawing.Point(264, 93);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 1;
@@ -90,11 +91,20 @@ namespace CentralApplication.Forms
             this.txtPassword.Size = new System.Drawing.Size(188, 21);
             this.txtPassword.TabIndex = 5;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(16, 77);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 10);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 138);
+            this.ClientSize = new System.Drawing.Size(353, 125);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label2);
@@ -121,5 +131,6 @@ namespace CentralApplication.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

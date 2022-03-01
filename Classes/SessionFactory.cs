@@ -10,6 +10,8 @@ using FluentNHibernate.Automapping;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Tool.hbm2ddl;
+using CentralApplication.Classes.EventListener;
+using NHibernate.Event;
 
 namespace CentralApplication.Classes
 {
@@ -63,6 +65,8 @@ namespace CentralApplication.Classes
 
         private static void BuildSchema(Configuration config)
         {
+            config.AppendListeners(ListenerType.PreInsert, new[] { new AuditEventListener() });
+
             //for testing purposes
             new SchemaUpdate(config).Execute(false,true);
         }

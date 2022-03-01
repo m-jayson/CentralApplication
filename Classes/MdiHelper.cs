@@ -125,15 +125,13 @@ namespace CentralApplication.Classes
 
         public static void loadModalAE(long id = -1)
         {
-            var currentUser = new User() { Id = 1, Firstname = "Jayson" };
-
             var assembly = Assembly.GetExecutingAssembly();
             var tag = instance.activeChild.Tag.ToString();
             var formName = "CentralApplication.Forms.frm" + tag + "_AE";
 
             var type = assembly.GetType(formName);
-            var ci = type.GetConstructor(new Type[3] { typeof(User),typeof(FormStatus),typeof(long) });
-            var argVals = new object[] { currentUser,id <=0 ? FormStatus.FORM_ADD : FormStatus.FORM_EDIT,id }; 
+            var ci = type.GetConstructor(new Type[2] { typeof(FormStatus),typeof(long) });
+            var argVals = new object[] { id <=0 ? FormStatus.FORM_ADD : FormStatus.FORM_EDIT,id }; 
 
             var frm = (Form) ci.Invoke(argVals);
 
