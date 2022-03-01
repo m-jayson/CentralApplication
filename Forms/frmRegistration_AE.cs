@@ -1,6 +1,7 @@
 ﻿using CentralApplication.Classes;
 using CentralApplication.Entities;
 using CentralApplication.Entities.Enumerations;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,12 @@ namespace CentralApplication.Forms
 
         private void frmRegistration_AE_Load(object sender, EventArgs e)
         {
-
+            if(this.formStatus != FormStatus.FORM_ADD)
+            {
+                MessageBox.Show("Only New Registration is implemented in this current version!","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Dispose();
+                this.Close();
+            }
         }
 
         private void btnCLose_Click(object sender, EventArgs e)
@@ -40,54 +46,57 @@ namespace CentralApplication.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
             var bookletCount = Convert.ToInt32(this.txtBookletCount.Value);
-            var partitionCount = 50;
-            var registration= new Registration();
-            var message = "";
-            var icon = SystemIcons.Information;
-
-            try
+            var registration = new Registration()
             {
-                using (var _session = SessionFactory.OpenSession)
-                {
-                    using (var _transaction = _session.BeginTransaction())
-                    {
-                        var tmpStartingIndex = 0;
-                        var documents = Enumerable.Range(1, bookletCount)
-                                        .Select(i =>
-                                        {
-                                            var document =  new Document()
-                                            {
-                                                Registration = registration,
-                                                SequenceFrom = tmpStartingIndex + 1,
-                                                SequenceTo = tmpStartingIndex + partitionCount
-                                            };
+                BookletCount = bookletCount,
+                CompanyType = CompanyType.COSMOS,
+                DocumentType = this.rbLPA.Checked ? DocumentType.LPA : DocumentType.PR,
+                User = this.user
+            };
 
-                                            tmpStartingIndex = document.SequenceTo;
-                                            return document;
-                                        }
-                                        ).ToList();
 
-                        registration.BookletCount = bookletCount;
-                        registration.Documents = documents;
-                        registration.CompanyType = CompanyType.COSMOS;
-                        registration.DocumentType = rbLPA.Checked ? DocumentType.LPA : DocumentType.PR;
-                        registration.User = this.user;
+            var tmpStartingIndex = Registration.findLastSequenceRegistered(registration.DocumentType);
+            var documents = Enumerable.Range(1, bookletCount)
+                            .Select(i =>
+                            {
+                                var document = new Document()
+                                {
+                                    Registration = registration,
+                                    SequenceFrom = tmpStartingIndex + 1,
+                                    SequenceTo = tmpStartingIndex + 50
+                                };
 
-                        _session.Save(registration);
-                        _transaction.Commit();
-                    }
-                }
-                message += "Registration Added.\nPlease refresh your list.";
-            }catch(Exception ex)
+                                tmpStartingIndex = document.SequenceTo;
+                                return document;
+                            }
+                            ).ToList();
+            registration.Documents = documents;
+
+            if (this.formStatus == FormStatus.FORM_ADD)
             {
-                message += ex.Message;
-                icon = SystemIcons.Exclamation;
+                var result = FormHelper<Registration>.formSave(registration, new RegistrationValidator());
+                if (result) this.Dispose();  this.Close();
             }
-            Cursor.Current = Cursors.Default;
-            MdiHelper.showNotification(message, "Registration Notification", icon);
-            this.Close();
+        }
+    }
+
+    class RegistrationValidator : AbstractValidator<Registration>
+    {
+        public RegistrationValidator()
+        {
+            RuleFor(p => p.BookletCount)
+                .Cascade(CascadeMode.StopOnFirstFailure)
+                .NotEmpty()
+                .WithMessage("{PropertyName} cannot be empty.")
+                .GreaterThan(0)
+                .WithMessage("{PropertyName} cannot be less than 1");
+            RuleFor(p => p.DocumentType)
+                .Cascade(CascadeMode.StopOnFirstFailure)
+                .NotEmpty()
+                .WithMessage("{PropertyName} cannot be empty")
+                .NotNull()
+                .WithMessage("{PropertyName} cannot be null");
         }
     }
 }

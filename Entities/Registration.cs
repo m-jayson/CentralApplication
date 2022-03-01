@@ -1,4 +1,5 @@
-﻿using CentralApplication.Entities.Enumerations;
+﻿using CentralApplication.Classes;
+using CentralApplication.Entities.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,23 @@ namespace CentralApplication.Entities
         public virtual DocumentType DocumentType { get; set; }
 
         public virtual User User { get; set; }
+
+        /**
+         * Method to find the latest seqence encoded
+         */
+        public static int findLastSequenceRegistered(DocumentType documentType)
+        {
+            using (var _session = SessionFactory.OpenSession)
+            {
+                var result = _session.Query<Registration>()
+                                .Where(r => r.DocumentType == documentType)
+                                .OrderByDescending(r => r.Id)
+                                .FirstOrDefault();
+
+                if (null == result) return 0;
+
+                return result.Documents.Max(d => d.SequenceTo);
+            }
+        }
     }
 }
