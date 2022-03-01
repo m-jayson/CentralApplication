@@ -21,8 +21,8 @@ namespace CentralApplication.Mappers
                 .Inverse()
                 .Cascade.All();
 
-            HasOne(s => s.CreatedBy);
-            HasOne(s => s.UpdatedBy);
+            References(s => s.CreatedBy);
+            References(s => s.UpdatedBy);
 
             Map(x => x.CreatedAt).Not.Nullable();
             Map(x => x.UpdatedAt).Not.Nullable();

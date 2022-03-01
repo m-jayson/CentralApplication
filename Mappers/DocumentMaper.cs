@@ -17,6 +17,12 @@ namespace CentralApplication.Mappers
 
             References(s => s.Registration);
 
+            HasOne(s => s.CreatedBy);
+            HasOne(s => s.UpdatedBy);
+
+            Map(x => x.CreatedAt).Not.Nullable();
+            Map(x => x.UpdatedAt).Not.Nullable();
+
             Table("document");
         }
     }
