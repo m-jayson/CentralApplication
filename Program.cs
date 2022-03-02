@@ -24,7 +24,7 @@ namespace CentralApplication
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             //Application.Run(MdiHelper.Instance().ParentForm);
-            using (var _session = SessionFactory.OpenSession)
+            /*using (var _session = SessionFactory.OpenSession)
              {
                  using (var _transaction = _session.BeginTransaction())
                  {
@@ -45,7 +45,7 @@ namespace CentralApplication
                      _transaction.Commit();
                  }
              }
-
+*/
              var helper = MdiHelper.Instance();
              Application.Run(helper.ParentForm);
         }

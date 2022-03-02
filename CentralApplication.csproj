@@ -134,6 +134,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DisplayerListView.cs" />
     <Compile Include="Classes\EventListener\AuditEventListener.cs" />
     <Compile Include="Classes\EventListener\IHaveAuditInformation.cs" />
     <Compile Include="Classes\FormHelper.cs" />
